@@ -13,7 +13,7 @@ app.get("/test", async (req: Request, res: Response) => {
 });
 
 //listen to a port
-const PORT = 7001;
+const PORT = process.env.PORT || 7001;
 
 app.listen(PORT, () => {
   console.log(`Server started on Port: ${PORT}`);
