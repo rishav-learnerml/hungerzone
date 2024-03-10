@@ -1,5 +1,8 @@
-import Layout from "@/layout/Layout";
+import Layout from "@/layouts/Layout";
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
+
+const Home = lazy(() => import("../pages/Home"));
 
 const AppRouter = createBrowserRouter([
   {
@@ -9,7 +12,11 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>Hello!</h1>,
+        element: (
+          <Suspense fallback={<h4>Loading...</h4>}>
+            <Home />
+          </Suspense>
+        ),
       },
     ],
   },

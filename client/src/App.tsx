@@ -1,9 +1,13 @@
 import { RouterProvider } from "react-router-dom";
-import "./App.css";
 import AppRouter from "./router/AppRouter";
+import Auth0ProviderWithNavigate from "./auth/Auth0ProviderWithNavigate";
 
 function App() {
-  return <RouterProvider router={AppRouter} />;
+  return (
+    <Auth0ProviderWithNavigate>
+      <RouterProvider router={AppRouter} />
+    </Auth0ProviderWithNavigate>
+  );
 }
 
 export default App;
