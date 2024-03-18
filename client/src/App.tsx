@@ -1,12 +1,20 @@
 import { RouterProvider } from "react-router-dom";
 import AppRouter from "./router/AppRouter";
-import Auth0ProviderWithNavigate from "./auth/Auth0ProviderWithNavigate";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, //stops default behaviour of making api call on tab switch
+    },
+  },
+});
 
 function App() {
   return (
-    <Auth0ProviderWithNavigate>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={AppRouter} />
-    </Auth0ProviderWithNavigate>
+    </QueryClientProvider>
   );
 }
 

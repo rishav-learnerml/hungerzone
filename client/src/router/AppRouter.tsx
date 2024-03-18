@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 const Home = lazy(() => import("../pages/Home"));
+const AuthCallbackPage = lazy(() => import("../pages/AuthCallbackPage"));
 
 const AppRouter = createBrowserRouter([
   {
@@ -15,6 +16,14 @@ const AppRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<h4>Loading...</h4>}>
             <Home />
+          </Suspense>
+        ),
+      },
+      {
+        path: "auth-callback",
+        element: (
+          <Suspense fallback={<h4>Loading...</h4>}>
+            <AuthCallbackPage />
           </Suspense>
         ),
       },
